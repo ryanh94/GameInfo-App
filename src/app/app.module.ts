@@ -3,16 +3,43 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './shared/services/auth/auth.gaurd';
+import { AuthInterceptor } from './shared/services/auth/auth.interceptor';
+import { SigninComponent } from './signin/signin.component';
+import { HomeComponent, AddGameDialog } from './home/home.component';
+import { tokenHelper } from './helpers/tokenHelper';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SigninComponent,
+    HomeComponent,
+    AddGameDialog
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    tokenHelper,
+    {
+      provide : HTTP_INTERCEPTORS,
+        useClass : AuthInterceptor,
+        multi : true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
