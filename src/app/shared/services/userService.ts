@@ -2,7 +2,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../models/userModel';
+import { User } from '../models/user';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -37,7 +37,7 @@ export class UserService {
       localStorage.removeItem('currentUser');
       this.currentUserSubject.next(null);
   }
-  gettoken() {
+  getToken() {
     return JSON.parse(localStorage.getItem('currentUser')).token;
   }
 

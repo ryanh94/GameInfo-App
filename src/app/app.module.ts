@@ -9,7 +9,7 @@ import { AuthGuard } from './shared/services/auth/auth.gaurd';
 import { AuthInterceptor } from './shared/services/auth/auth.interceptor';
 import { SigninComponent } from './signin/signin.component';
 import { HomeComponent, AddGameDialog } from './home/home.component';
-import { tokenHelper } from './helpers/tokenHelper';
+import { TokenHelper } from './helpers/TokenHelper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -33,7 +33,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
   providers: [
     AuthGuard,
-    tokenHelper,
+    TokenHelper,
     {
       provide : HTTP_INTERCEPTORS,
         useClass : AuthInterceptor,

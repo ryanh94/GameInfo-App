@@ -2,7 +2,7 @@ import { HttpRequest, HttpInterceptor, HttpHandler, HttpEvent, HttpErrorResponse
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { User } from '../../models/userModel';
+import { User } from '../../models/user';
 import { Injectable } from '@angular/core';
 
 @Injectable()

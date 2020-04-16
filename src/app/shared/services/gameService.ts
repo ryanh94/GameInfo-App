@@ -1,11 +1,10 @@
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../models/userModel';
+import { User } from '../models/user';
 import { Injectable } from '@angular/core';
-import { tokenHelper } from '../../helpers/tokenHelper';
-import { Game } from '../models/gameModel';
+import { TokenHelper } from '../../helpers/TokenHelper';
+import { Game } from '../models/game';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,7 @@ export class GameService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
   readonly baseUrl = environment.APIUrl;
-  constructor(private http: HttpClient, public thelper: tokenHelper) {
+  constructor(private http: HttpClient, public thelper: TokenHelper) {
       this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
       this.currentUser = this.currentUserSubject.asObservable();
   }

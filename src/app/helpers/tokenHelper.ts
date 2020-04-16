@@ -4,7 +4,7 @@ import { UserService } from '../shared/services/userService';
 
 
 @Injectable()
-export class tokenHelper {
+export class TokenHelper {
     constructor(private userService: UserService
         ) {
     }
@@ -12,7 +12,7 @@ export class tokenHelper {
         if (this.userService.currentUserValue === null) {
             return '';
         }
-        const currentUser = this.userService.gettoken();
+        const currentUser = this.userService.getToken();
         const decoded = jwt_decode(currentUser);
         if (decoded.exp < (Date.now() / 1000) ) {
             this.userService.logout();
