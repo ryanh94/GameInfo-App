@@ -8,18 +8,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './shared/services/auth/auth.gaurd';
 import { AuthInterceptor } from './shared/services/auth/auth.interceptor';
 import { SigninComponent } from './signin/signin.component';
-import { HomeComponent, AddGameDialog } from './home/home.component';
-import { TokenHelper } from './helpers/TokenHelper';
+import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AddGameComponent } from './home/add-game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
     HomeComponent,
-    AddGameDialog
+    AddGameComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +33,6 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
   providers: [
     AuthGuard,
-    TokenHelper,
     {
       provide : HTTP_INTERCEPTORS,
         useClass : AuthInterceptor,

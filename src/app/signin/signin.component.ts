@@ -22,13 +22,14 @@ export class SigninComponent implements OnInit {
         private router: Router,
         private userService: UserService
     ) {
-        // redirect to home if already logged in
-        if (this.userService.getUser) {
-            this.router.navigate(['/']);
-        }
+        
     }
 
     ngOnInit() {
+        // redirect to home if already logged in
+        if (this.userService.getUser()) {
+            this.router.navigate(['/']);
+        }
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
             password: ['', Validators.required]
